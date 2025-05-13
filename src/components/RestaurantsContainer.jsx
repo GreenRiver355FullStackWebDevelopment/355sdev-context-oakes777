@@ -1,3 +1,4 @@
+//import custom context hook to access shared state
 import { useRestaurants } from "../context/RestaurantContext";
 import Restaurant from "./Restaurant";
 

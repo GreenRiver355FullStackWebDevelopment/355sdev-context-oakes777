@@ -1,4 +1,5 @@
 import { useState } from "react";
+//import custom context hook to access update fxn
 import { useRestaurants } from "../context/RestaurantContext";
 
 function AddRestaurant() {

@@ -1,11 +1,13 @@
 import Main from "./components/Main";
 import { useEffect, useState } from "react";
 import "./App.css";
+//import the custom context object
 import { RestaurantContext } from "./context/RestaurantContext";
 
 function App() {
-  const [restaurantState, setRestaurants] = useState([]);
 
+  const [restaurantState, setRestaurants] = useState([]);
+  //fxn that updates the global restaurant list
   const updateRestaurants = (newRestaurant) => {
     setRestaurants((prev) => [...prev, newRestaurant]);
   };
@@ -25,10 +27,13 @@ function App() {
   }, []);
 
   return (
+    //wrap the app in the context provider
+    //this makes 'restaurants' and 'updateRestaurants' available to any nested components that calls the useRestaurant() hook from RestaurantContext
     <RestaurantContext.Provider
       value={{ restaurants: restaurantState, updateRestaurants }} //shared via context
     >
       <div className="App">
+        {/* all child components inside here can now use useRestaurants() to access shared state */}
         <Main />
       </div>
     </RestaurantContext.Provider>

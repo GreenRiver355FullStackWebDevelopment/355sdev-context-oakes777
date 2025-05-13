@@ -11,5 +11,5 @@ function Restaurant({ restaurant: { name, address, phone, cuisine, rating } }) {
     </div>
   );
 }
-
+//added export line - was getting blank screen without this!
 export default Restaurant;
