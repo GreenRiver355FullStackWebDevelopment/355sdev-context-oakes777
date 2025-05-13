@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRestaurants } from "../context/RestaurantContext";
 
 function AddRestaurant() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ function AddRestaurant() {
     cuisine: "",
     rating: "",
   });
+
+  const { updateRestaurants } = useRestaurants();
 
   const handleChange = (e) => {
     const name = e.target.name;

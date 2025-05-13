@@ -1,10 +1,14 @@
 import Main from "./components/Main";
-
 import { useEffect, useState } from "react";
 import "./App.css";
+import { RestaurantContext } from "./context/RestaurantContext";
 
 function App() {
   const [restaurantState, setRestaurants] = useState([]);
+
+  const updateRestaurants = (newRestaurant) => {
+    setRestaurants((prev) => [...prev, newRestaurant]);
+  };
 
   useEffect(() => {
     async function fetchRestaurants() {
@@ -20,14 +24,14 @@ function App() {
     fetchRestaurants();
   }, []);
 
-  const updateRestaurants = (restaurant) => {
-    setRestaurants([...restaurantState, restaurant]);
-  };
-
   return (
-    <div className="App">
-      <Main />
-    </div>
+    <RestaurantContext.Provider
+      value={{ restaurants: restaurantState, updateRestaurants }} //shared via context
+    >
+      <div className="App">
+        <Main />
+      </div>
+    </RestaurantContext.Provider>
   );
 }
 export default App;

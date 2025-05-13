@@ -1,6 +1,9 @@
+import { useRestaurants } from "../context/RestaurantContext";
 import Restaurant from "./Restaurant";
 
 function RestaurantsContainer() {
+  const { restaurants } = useRestaurants();//context instead of props
+  
   return (
     <div className="restaurantContainer">
       {restaurants.map((restaurant) => (
